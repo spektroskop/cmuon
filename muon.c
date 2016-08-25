@@ -758,7 +758,10 @@ remove_window(struct window *window) {
 
 void
 substructure(void) {
-    unsigned values[] = { XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT|XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY };
+    unsigned values[] = {
+        XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT |
+        XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY
+    };
     xcb_void_cookie_t cookie = xcb_change_window_attributes_checked(connection, root, XCB_CW_EVENT_MASK, values);
 
     if(xcb_request_check(connection, cookie)) {
