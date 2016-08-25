@@ -242,7 +242,10 @@ add_monitor(unsigned x, unsigned y, unsigned w, unsigned h) {
 
     node_init(&monitor->windows);
     node_append(&monitor->node, &monitors);
-    curmon = monitor;
+
+    if(!curmon) {
+        curmon = monitor;
+    }
 
     reset_layout(monitor);
 
