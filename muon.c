@@ -670,6 +670,8 @@ add_window(struct monitor *monitor, xcb_window_t id) {
 
     xcb_icccm_get_wm_transient_for_reply(connection, xcb_icccm_get_wm_transient_for_unchecked(connection, id), &transient, NULL);
 
+    /*
+    FIXME
     if((window->transient = find_window(transient))) {
         p("window is transient for 0x%08x -> `%s'", window->transient->id, window->transient->name);
         float_window(window);
@@ -679,6 +681,7 @@ add_window(struct monitor *monitor, xcb_window_t id) {
 
         move(window, x, y); // FIXME
     }
+    */
 
     xcb_ewmh_get_atoms_reply_t atoms;
 
