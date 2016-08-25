@@ -7,21 +7,21 @@
 
 #define node_entry(ptr, type, member) ((type *)((char *)(ptr)-(unsigned long)(&((type *)0)->member)))
 #define node_first_entry(ptr, type, member) node_entry((ptr)->next, type, member)
-#define each_node(pos, head) for(pos=(head)->next; pos!=(head); pos=pos->next)
+#define each_node(pos, head) for(pos = (head)->next; pos != (head); pos = pos->next)
 #define each_node_entry(pos, head, member) \
-    for(pos=node_entry((head)->next, __typeof__(*pos), member); \
-       &pos->member!=(head); \
-        pos=node_entry(pos->member.next, __typeof__(*pos), member))
+    for(pos = node_entry((head)->next, __typeof__(*pos), member); \
+       &pos->member != (head); \
+        pos = node_entry(pos->member.next, __typeof__(*pos), member))
 #define each_node_entry_from(pos, node, member) \
-    for(; &pos->member!=(node); \
-           pos=node_entry(pos->member.next, __typeof__(*pos), member))
+    for(; &pos->member != (node); \
+           pos = node_entry(pos->member.next, __typeof__(*pos), member))
 
 #define each_node_entry_safe(pos, n, node, member) \
-    for(pos=node_entry((node)->next, __typeof__(*pos), member), \
-          n=node_entry(pos->member.next, __typeof__(*pos), member); \
-       &pos->member!=(node); \
-        pos=n, \
-          n=node_entry(n->member.next, __typeof__(*n), member))
+    for(pos = node_entry((node)->next, __typeof__(*pos), member), \
+          n = node_entry(pos->member.next, __typeof__(*pos), member); \
+       &pos->member != (node); \
+        pos = n, \
+          n = node_entry(n->member.next, __typeof__(*n), member))
 
 struct node {
     struct node *next, *prev;
@@ -38,17 +38,17 @@ static inline void __node_add(struct node *new, struct node *prev, struct node *
     prev->next = new;
 }
 
+static inline void __node_remove(struct node *prev, struct node *next) {
+    next->prev = prev;
+    prev->next = next;
+}
+
 static inline void node_insert(struct node *new, struct node *head) {
     __node_add(new, head, head->next);
 }
 
 static inline void node_append(struct node *new, struct node *head) {
     __node_add(new, head->prev, head);
-}
-
-static inline void __node_remove(struct node *prev, struct node *next) {
-    next->prev = prev;
-    prev->next = next;
 }
 
 static inline void node_remove(struct node *node) {
