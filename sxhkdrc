@@ -1,0 +1,50 @@
+super + F1
+    pkill -USR1 -x sxhkd
+
+super + b
+    $BROWSER
+
+super + shift + Return
+    $TERMINAL
+
+super + shift + q
+    muoc quit
+
+super + {Tab, shift + Tab}
+    muoc select-window {+1,-1}
+
+super + {j,k}
+    muoc select-window {+1,-1}
+
+super + {comma,period}
+    muoc root-count {+1,-1}
+
+super + {0, s, shift + s, a, shift + a}
+    muoc root-size {0.5, +0.05, +0.01, -0.05, -0.01}
+
+super + m
+    muoc mirror toggle
+
+super + x
+    muoc close-window
+
+super + f
+    muoc fullscreen toggle
+
+super + shift + {j,k}
+    muoc shift-window {+1,-1}
+
+super + space
+    muoc next-layout
+
+super + shift + space
+    muoc reset-layout
+
+super + o
+    muoc toggle-floating
+
+super + Return
+    muoc make-root
+
+super + d
+    muoc debug-window

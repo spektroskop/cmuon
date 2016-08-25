@@ -1,0 +1,7 @@
+#!/bin/sh
+
+muoc begin
+    muoc window-gap 2
+    muoc root-size 0.65
+    muoc border-width 5
+muoc end
