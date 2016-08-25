@@ -48,3 +48,9 @@ super + Return
 
 super + d
     muoc debug-window
+
+~button1
+    muoc focus-window
+
+button{4,5}
+    muoc select-window {-1,+1}
