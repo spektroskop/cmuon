@@ -34,6 +34,9 @@ super + f
 super + shift + {j,k}
     muoc shift-window {+1,-1}
 
+super + shift + button{4,5}
+    muoc shift-window {-1,+1}
+
 super + space
     muoc next-layout
 
